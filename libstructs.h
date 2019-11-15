@@ -6,15 +6,15 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 16:45:57 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/11/15 17:19:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/11/15 17:48:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBSTRUCTS_H
 # define LIBSTRUCTS_H
 
-# ifndef LIBS_NO_PREFRENCES
-#  include "libs_prefences.h"
+# ifndef LIBS_NO_PREFERENCES
+#  include "libs_preferences.h"
 # endif
 
 # ifndef LIBS_NO_SIGNED_STRUCTS
