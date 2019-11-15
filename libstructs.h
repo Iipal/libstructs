@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 16:45:57 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/11/15 21:15:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/11/15 21:29:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #  define LIBS_NO_SIGNED_STRUCTS
 #  define LIBS_NO_UNSIGNED_STRUCTS
 #  define LIBS_NO_FLOATING_STRUCTS
+#  define LIBS_NO_VOIDPTR_STRUCTS
 # endif /* LIBS_NO_STRUCTS */
 
 # ifndef LIBS_CREATE_2_STRUCT

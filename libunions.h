@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 21:02:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/11/15 21:14:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/11/15 21:28:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #  define LIBS_NO_SIGNED_UNIONS
 #  define LIBS_NO_UNSIGNED_UNIONS
 #  define LIBS_NO_FLOATING_UNIONS
+#  define LIBS_NO_VOIDPTR_UNIONS
 # endif /* LIBS_NO_UNIONS */
 
 # ifndef LIBS_CREATE_2_UNION
