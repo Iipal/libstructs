@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 17:10:50 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/11/15 17:20:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/11/15 17:43:18 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define LIBS_UNSIGNED_H
 
 # include "libs_macro.h"
+
+# ifndef LIBSTRUCTS_H
+#  error "include libstructs.h only instead of libs_unsigned."
+# endif
 
 /*
 ** unsigned char

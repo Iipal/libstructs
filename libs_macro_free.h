@@ -6,12 +6,16 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 17:01:41 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/11/15 17:02:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/11/15 17:42:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBS_MACRO_FREE_H
 # define LIBS_MACRO_FREE_H
+
+# ifndef LIBSTRUCTS_H
+#  error "include libstructs.h only instead of libs_macro_free.h."
+# endif
 
 # ifdef CREATE_2_STRUCT
 #  undef CREATE_2_STRUCT

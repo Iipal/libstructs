@@ -6,12 +6,16 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 17:05:27 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/11/15 17:22:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/11/15 17:42:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBS_PREFENCES_H
 # define LIBS_PREFENCES_H
+
+# ifndef LIBSTRUCTS_H
+#  error "include libstructs.h only instead of libs_prefences.h."
+# endif
 
 /*
 ** Activate of creating signed struct types
@@ -70,5 +74,6 @@
 #  ifndef LIBS_NO_CREATE_FLOATING_LONG_DOUBLE_STRUCTS
 #   define LIBS_CREATE_FLOATING_LONG_DOUBLE_STRUCTS
 #  endif /* LIBS_NO_CREATE_FLOATING_LONG_DOUBLE_STRUCTS */
+# endif /* LIBS_NO_FLOATING_STRUCTS */
 
 #endif /* LIBS_PREFENCES_H */

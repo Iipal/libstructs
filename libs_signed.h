@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 17:02:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/11/15 17:20:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/11/15 17:43:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include "libs_macro.h"
 
+# ifndef LIBSTRUCTS_H
+#  error "include libstructs.h only instead of libs_signed.h."
+# endif
 /*
 ** signed char
 */

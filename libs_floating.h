@@ -6,12 +6,16 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 17:13:27 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/11/15 17:19:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/11/15 17:42:16 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBS_FLOATING_H
 # define LIBS_FLOATING_H
+
+# ifndef LIBSTRUCTS_H
+#  error "include libstructs.h only instead of libs_floating.h."
+# endif
 
 # include "libs_macro.h"
 
