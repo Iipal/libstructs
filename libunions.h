@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 21:02:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/11/15 21:13:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/11/15 21:14:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,19 @@
 LIBS_CREATE_234_UNION(s, signed); /* signed: s2s;s3s;s4s */
 #  endif /* LIBS_NO_CREATE_SIGNED_UNIONS */
 #  ifndef LIBS_NO_CREATE_SIGNED_CHAR_UNIONS
-LIBS_CREATE_234_UNION(sc, char); /* char: s2sc;s3sc;s4sc */
+LIBS_CREATE_234_UNION(sc, signed char); /* char: s2sc;s3sc;s4sc */
 #  endif /* LIBS_NO_CREATE_SIGNED_CHAR_UNIONS */
 #  ifndef LIBS_NO_CREATE_SIGNED_SHORT_UNIONS
-LIBS_CREATE_234_UNION(ss, short); /* short: s2ss;s3ss;s4ss */
+LIBS_CREATE_234_UNION(ss, signed short); /* short: s2ss;s3ss;s4ss */
 #  endif /* LIBS_NO_CREATE_SIGNED_SHORT_UNIONS */
 #  ifndef LIBS_NO_CREATE_SIGNED_INT_UNIONS
-LIBS_CREATE_234_UNION(si, int); /* int: s2si;s3si;s4si */
+LIBS_CREATE_234_UNION(si, signed int); /* int: s2si;s3si;s4si */
 #  endif /* LIBS_NO_CREATE_SIGNED_INT_UNIONS */
 #  ifndef LIBS_NO_CREATE_SIGNED_LONG_UNIONS
-LIBS_CREATE_234_UNION(sl, long); /* long: s2sl;s3sl;s4sl */
+LIBS_CREATE_234_UNION(sl, signed long); /* long: s2sl;s3sl;s4sl */
 #  endif /* LIBS_NO_CREATE_SIGNED_LONG_UNIONS */
 #  ifndef LIBS_NO_CREATE_SIGNED_LONG_LONG_UNIONS
-LIBS_CREATE_234_UNION(sll, long long); /* long: s2sll;s3sll;s4sll */
+LIBS_CREATE_234_UNION(sll, signed long long); /* long: s2sll;s3sll;s4sll */
 #  endif /* LIBS_NO_CREATE_SIGNED_LONG_LONG_UNIONS */
 # endif /* LIBS_NO_SIGNED_UNIONS */
 
