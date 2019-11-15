@@ -29,7 +29,7 @@ Prefences for deactivate creating of whatever type you want:
 
 This define will deactivate all new types from libstructs.h.
 ```
-# define LIBS_NO_PREFERENCES
+# define LIBS_NO_STRUCTS
 # include "libstructs.h"
 ```
 
@@ -45,4 +45,4 @@ This define will deactivate only new unsinged short types from libstructs.h. Suc
 # include "libstructs.h"
 ```
 
-See more in: [libs_preferences.h](../master/libs_preferences.h)
+See more in: [libs_preferences.h](../master/libstructs.h)
