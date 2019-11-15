@@ -45,4 +45,4 @@ This define will deactivate only new unsinged short types from libstructs.h. Suc
 # include "libstructs.h"
 ```
 
-See more in: [libs_preferences.h](../master/libstructs.h)
+See more in: [libstructs.h](../master/libstructs.h)
