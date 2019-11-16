@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 16:45:57 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/11/15 21:29:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/11/16 15:24:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,203 @@
 # define LIBSTRUCTS_H
 
 # ifdef LIBS_NO_STRUCTS
-#  define LIBS_CREATE_2_STRUCT
-#  define LIBS_CREATE_3_STRUCT
-#  define LIBS_CREATE_4_STRUCT
+#  define LIBS_CREATE_STRUCT2
+#  define LIBS_CREATE_STRUCT3
+#  define LIBS_CREATE_STRUCT4
 #  define LIBS_CREATE_234_STRUCT
 
 #  define LIBS_NO_SIGNED_STRUCTS
 #  define LIBS_NO_UNSIGNED_STRUCTS
 #  define LIBS_NO_FLOATING_STRUCTS
 #  define LIBS_NO_VOIDPTR_STRUCTS
+
+#  define libs_always_inline
 # endif /* LIBS_NO_STRUCTS */
 
-# ifndef LIBS_CREATE_2_STRUCT
-#  define LIBS_CREATE_2_STRUCT(short_name, type) \
-	typedef struct s_2##short_name { \
+# include <sys/cdefs.h>
+# ifndef libs_always_inline
+#  if defined __header_always_inline
+#   define libs_always_inline __header_always_inline
+#  elif defined __always_inline
+#   define libs_always_inline __always_inline
+#  else
+#   define libs_always_inline
+#  endif
+# endif
+
+# ifndef LIBS_CREATE_STRUCT2
+#  define LIBS_CREATE_STRUCT2(name, type) \
+	typedef struct s_2##name { \
 		type x; type y; \
-	} s2##short_name __attribute__((__aligned__))
-# endif /* LIBS_CREATE_2_STRUCT */
+	} s2##name __attribute__((__aligned__))
+# endif /* LIBS_CREATE_STRUCT2 */
 
-# ifndef LIBS_CREATE_3_STRUCT
-#  define LIBS_CREATE_3_STRUCT(short_name, type) \
-	typedef struct s_3##short_name { \
+# ifndef LIBS_CREATE_STRUCT3
+#  define LIBS_CREATE_STRUCT3(name, type) \
+	typedef struct s_3##name { \
 		type x; type y; type z; \
-	} s3##short_name __attribute__((__aligned__))
-# endif /* LIBS_CREATE_3_STRUCT */
+	} s3##name __attribute__((__aligned__))
+# endif /* LIBS_CREATE_STRUCT3 */
 
-# ifndef LIBS_CREATE_4_STRUCT
-#  define LIBS_CREATE_4_STRUCT(short_name, type) \
-	typedef struct s_4##short_name { \
+# ifndef LIBS_CREATE_STRUCT4
+#  define LIBS_CREATE_STRUCT4(name, type) \
+	typedef struct s_4##name { \
 		type x; type y; type z; type w; \
-	} s4##short_name __attribute__((__aligned__))
-# endif /* LIBS_CREATE_4_STRUCT */
+	} s4##name __attribute__((__aligned__))
+# endif /* LIBS_CREATE_STRUCT4 */
+
+# ifndef LIBS_INIT_STRUCT2
+#  define LIBS_INIT_STRUCT2(name, type) \
+	s2##name libs_always_inline \
+	libs_init_s2##name##__(type x__, type y__) { \
+		return (s2##name) { x__, y__ }; }
+# endif /* LIBS_INIT_STRUCT2 */
+
+# ifndef LIBS_INIT_STRUCT3
+#  define LIBS_INIT_STRUCT3(name, type) \
+	s3##name libs_always_inline \
+	libs_init_s3##name##__(type x__, type y__, type z__) { \
+		return (s3##name) { x__, y__, z__ }; }
+# endif /* LIBS_INIT_STRUCT3 */
+
+# ifndef LIBS_INIT_STRUCT4
+#  define LIBS_INIT_STRUCT4(name, type) \
+	s4##name libs_always_inline \
+	libs_init_s4##name##__(type x__, type y__, type z__, type w__) { \
+		return (s4##name) { x__, y__, z__, w__ }; }
+# endif /* LIBS_INIT_STRUCT4 */
+
+# ifndef LIBS_STRUCT2_TO_STRUCT3
+#  define LIBS_STRUCT2_TO_STRUCT3(name, type) \
+	s3##name libs_always_inline \
+	libs_s2##name##_to_s3##name##__(s2##name src__, type z__) { \
+		return (s3##name) { src__.x, src__.y, z__ }; }
+# endif /* LIBS_STRUCT2_TO_STRUCT3 */
+
+# ifndef LIBS_STRUCT2_TO_STRUCT4
+#  define LIBS_STRUCT2_TO_STRUCT4(name, type) \
+	s4##name libs_always_inline \
+	libs_s2##name##_to_s4##name##__(s2##name src__, type z__, type w__) { \
+		return (s4##name) { src__.x, src__.y, z__, w__}; }
+# endif /* LIBS_STRUCT2_TO_STRUCT4 */
+
+# ifndef LIBS_STRUCT3_TO_STRUCT2
+#  define LIBS_STRUCT3_TO_STRUCT2(name) \
+	s2##name libs_always_inline \
+		libs_s3##name##_to_s2##name##__(s3##name src__) { \
+			return (s2##name) { src__.x, src__.y, }; }
+# endif /* LIBS_STRUCT3_TO_STRUCT2 */
+
+# ifndef LIBS_STRUCT3_TO_STRUCT4
+#  define LIBS_STRUCT3_TO_STRUCT4(name, type) \
+	s4##name libs_always_inline \
+	libs_s3##name##_to_s4##name##__(s3##name src__, type w__) { \
+		return (s4##name) { src__.x, src__.y, src__.z, w__ }; }
+# endif /* LIBS_STRUCT3_TO_STRUCT4 */
+
+# ifndef LIBS_STRUCT4_TO_STRUCT3
+#  define LIBS_STRUCT4_TO_STRUCT3(name) \
+	s3##name libs_always_inline \
+	libs_s4##name##_to_s3##name##__(s4##name src__) { \
+		return (s3##name) { src__.x, src__.y, src__.z }; }
+# endif /* LIBS_STRUCT4_TO_STRUCT3 */
+
+# ifndef LIBS_STRUCT4_TO_STRUCT2
+#  define LIBS_STRUCT4_TO_STRUCT2(name) \
+	s2##name libs_always_inline \
+	libs_s4##name##_to_s2##name##__(s4##name src__) { \
+		return (s2##name) { src__.x, src__.y }; }
+# endif /* LIBS_STRUCT4_TO_STRUCT2 */
+
+# ifndef LIBS_STRUCT2_ADD_STRUCT2
+#  define LIBS_STRUCT2_ADD_STRUCT2(name) \
+	s2##name libs_always_inline \
+	libs_s2##name##_add_s2##name##__(s2##name a__, s2##name b__) { \
+		return (s2##name) { a__.x + b__.x, a__.y + b__.y }; }
+# endif /* LIBS_STRUCT2_ADD_STRUCT2 */
+
+# ifndef LIBS_STRUCT2_ADD_STRUCT3
+#  define LIBS_STRUCT2_ADD_STRUCT3(name) \
+	s2##name libs_always_inline \
+	libs_s2##name##_add_s3##name##__(s2##name a__, s3##name b__) { \
+		return (s2##name) { a__.x + b__.x, a__.y + b__.y }; }
+# endif /* LIBS_STRUCT2_ADD_STRUCT3 */
+
+# ifndef LIBS_STRUCT2_ADD_STRUCT4
+#  define LIBS_STRUCT2_ADD_STRUCT4(name) \
+	s2##name libs_always_inline \
+	libs_s2##name##_add_s4##name##__(s2##name a__, s4##name b__) { \
+		return (s2##name) { a__.x + b__.x, a__.y + b__.y }; }
+# endif /* LIBS_STRUCT2_ADD_STRUCT4 */
+
+# ifndef LIBS_STRUCT3_ADD_STRUCT2
+#  define LIBS_STRUCT3_ADD_STRUCT2(name) \
+	s3##name libs_always_inline \
+	libs_s3##name##_add_s2##name##__(s3##name a__, s2##name b__) { \
+		return (s3##name) { a__.x + b__.x, a__.y + b__.y, 0 }; }
+# endif /* LIBS_STRUCT3_ADD_STRUCT2 */
+
+# ifndef LIBS_STRUCT3_ADD_STRUCT3
+#  define LIBS_STRUCT3_ADD_STRUCT3(name) \
+	s3##name libs_always_inline \
+	libs_s3##name##_add_s3##name##__(s3##name a__, s3##name b__) { \
+		return (s3##name) { a__.x + b__.x, a__.y + b__.y, a__.z + b__.z }; }
+# endif /* LIBS_STRUCT3_ADD_STRUCT3 */
+
+# ifndef LIBS_STRUCT3_ADD_STRUCT4
+#  define LIBS_STRUCT3_ADD_STRUCT4(name) \
+	s3##name libs_always_inline \
+	libs_s3##name##_add_s4##name##__(s3##name a__, s4##name b__) { \
+		return (s3##name) { a__.x + b__.x, a__.y + b__.y, a__.z + b__.z }; }
+# endif /* LIBS_STRUCT3_ADD_STRUCT4 */
+
+# ifndef LIBS_STRUCT4_ADD_STRUCT2
+#  define LIBS_STRUCT4_ADD_STRUCT2(name) \
+	s4##name libs_always_inline \
+	libs_s4##name##_add_s2##name##__(s4##name a__, s2##name b__) { \
+		return (s4##name) { a__.x + b__.x, a__.y + b__.y, 0, 0 }; }
+# endif /* LIBS_STRUCT4_ADD_STRUCT2 */
+
+# ifndef LIBS_STRUCT4_ADD_STRUCT3
+#  define LIBS_STRUCT4_ADD_STRUCT3(name) \
+	s4##name libs_always_inline \
+	libs_s4##name##_add_s3##name##__(s4##name a__, s3##name b__) { \
+		return (s4##name) { a__.x + b__.x, a__.y + b__.y, a__.z + b__.z, 0 }; }
+# endif /* LIBS_STRUCT4_ADD_STRUCT3 */
+
+# ifndef LIBS_STRUCT4_ADD_STRUCT4
+#  define LIBS_STRUCT4_ADD_STRUCT4(name) \
+	s4##name libs_always_inline \
+		libs_s4##name##_add_s4##name##__(s4##name a__, s4##name b__) { \
+			return (s4##name) { a__.x + b__.x, a__.y + b__.y, \
+								a__.z + b__.z, a__.w + b__.w, }; }
+# endif /* LIBS_STRUCT4_ADD_STRUCT4 */
 
 # ifndef LIBS_CREATE_234_STRUCT
-#  define LIBS_CREATE_234_STRUCT(short_name, type) \
-	LIBS_CREATE_2_STRUCT(short_name, type); \
-	LIBS_CREATE_3_STRUCT(short_name, type); \
-	LIBS_CREATE_4_STRUCT(short_name, type)
+#  define LIBS_CREATE_234_STRUCT(name, type) \
+	LIBS_CREATE_STRUCT2(name, type); \
+	LIBS_CREATE_STRUCT3(name, type); \
+	LIBS_CREATE_STRUCT4(name, type); \
+	LIBS_INIT_STRUCT2(name, type); \
+	LIBS_INIT_STRUCT3(name, type); \
+	LIBS_INIT_STRUCT4(name, type); \
+	LIBS_STRUCT2_TO_STRUCT4(name, type); \
+	LIBS_STRUCT2_TO_STRUCT3(name, type); \
+	LIBS_STRUCT3_TO_STRUCT4(name, type); \
+	LIBS_STRUCT3_TO_STRUCT2(name); \
+	LIBS_STRUCT4_TO_STRUCT3(name); \
+	LIBS_STRUCT4_TO_STRUCT2(name); \
+	LIBS_STRUCT2_ADD_STRUCT2(name); \
+	LIBS_STRUCT2_ADD_STRUCT3(name); \
+	LIBS_STRUCT2_ADD_STRUCT4(name); \
+	LIBS_STRUCT3_ADD_STRUCT2(name); \
+	LIBS_STRUCT3_ADD_STRUCT3(name); \
+	LIBS_STRUCT3_ADD_STRUCT4(name); \
+	LIBS_STRUCT4_ADD_STRUCT2(name); \
+	LIBS_STRUCT4_ADD_STRUCT3(name); \
+	LIBS_STRUCT4_ADD_STRUCT4(name);
 # endif /* LIBS_CREATE_234_STRUCT */
+
 
 /* activate signed structs */
 # ifndef LIBS_NO_SIGNED_STRUCTS
@@ -110,24 +269,68 @@ LIBS_CREATE_234_STRUCT(ld, double); /* long double: s2ld;s3ld;s4ld */
 #  endif /* LIBS_NO_CREATE_FLOATING_LONG_DOUBLE_STRUCTS */
 # endif /* LIBS_NO_FLOATING_STRUCTS */
 
-/* actiavte void pointer structs */
-# ifndef LIBS_NO_VOIDPTR_STRUCTS
-#  ifndef LIBS_NO_CREATE_VOIDPTR_STRUCTS
-LIBS_CREATE_234_STRUCT(vptr, void*); /* void*: s2vptr;s3vptr;s4vptr */
-#  endif /* LIBS_NO_CREATE_VOIDPTR_STRUCTS */
-# endif /* LIBS_NO_VOIDPTR_STRUCTS */
-
 /* "delete" macroses for structs creating. */
-# ifdef LIBS_CREATE_2_STRUCT
-#  undef LIBS_CREATE_2_STRUCT
-# endif /* LIBS_CREATE_2_STRUCT */
-# ifdef LIBS_CREATE_3_STRUCT
-#  undef LIBS_CREATE_3_STRUCT
-# endif /* LIBS_CREATE_3_STRUCT */
-# ifdef LIBS_CREATE_4_STRUCT
-#  undef LIBS_CREATE_4_STRUCT
-# endif /* LIBS_CREATE_4_STRUCT */
+# ifdef LIBS_CREATE_STRUCT2
+#  undef LIBS_CREATE_STRUCT2
+# endif /* LIBS_CREATE_STRUCT2 */
+# ifdef LIBS_CREATE_STRUCT3
+#  undef LIBS_CREATE_STRUCT3
+# endif /* LIBS_CREATE_STRUCT3 */
+# ifdef LIBS_CREATE_STRUCT4
+#  undef LIBS_CREATE_STRUCT4
+# endif /* LIBS_CREATE_STRUCT4 */
 # ifdef LIBS_CREATE_234_STRUCT
 #  undef LIBS_CREATE_234_STRUCT
 # endif /* LIBS_CREATE_234_STRUCT */
+
+# ifdef LIBS_STRUCT2_TO_STRUCT4
+#  undef LIBS_STRUCT2_TO_STRUCT4
+# endif /* LIBS_STRUCT2_TO_STRUCT4 */
+# ifdef LIBS_STRUCT2_TO_STRUCT3
+#  undef LIBS_STRUCT2_TO_STRUCT3
+# endif /* LIBS_STRUCT2_TO_STRUCT3 */
+# ifdef LIBS_STRUCT3_TO_STRUCT4
+#  undef LIBS_STRUCT3_TO_STRUCT4
+# endif /* LIBS_STRUCT3_TO_STRUCT4 */
+# ifdef LIBS_STRUCT3_TO_STRUCT2
+#  undef LIBS_STRUCT3_TO_STRUCT2
+# endif /* LIBS_STRUCT3_TO_STRUCT2 */
+# ifdef LIBS_STRUCT4_TO_STRUCT3
+#  undef LIBS_STRUCT4_TO_STRUCT3
+# endif /* LIBS_STRUCT4_TO_STRUCT3 */
+# ifdef LIBS_STRUCT4_TO_STRUCT2
+#  undef LIBS_STRUCT4_TO_STRUCT2
+# endif /* LIBS_STRUCT4_TO_STRUCT2 */
+
+# ifdef LIBS_STRUCT2_ADD_STRUCT2
+#  undef LIBS_STRUCT2_ADD_STRUCT2
+# endif /* LIBS_STRUCT2_ADD_STRUCT2 */
+# ifdef LIBS_STRUCT2_ADD_STRUCT3
+#  undef LIBS_STRUCT2_ADD_STRUCT3
+# endif /* LIBS_STRUCT2_ADD_STRUCT3 */
+# ifdef LIBS_STRUCT2_ADD_STRUCT4
+#  undef LIBS_STRUCT2_ADD_STRUCT4
+# endif /* LIBS_STRUCT2_ADD_STRUCT4 */
+# ifdef LIBS_STRUCT3_ADD_STRUCT2
+#  undef LIBS_STRUCT3_ADD_STRUCT2
+# endif /* LIBS_STRUCT3_ADD_STRUCT2 */
+# ifdef LIBS_STRUCT3_ADD_STRUCT3
+#  undef LIBS_STRUCT3_ADD_STRUCT3
+# endif /* LIBS_STRUCT3_ADD_STRUCT3 */
+# ifdef LIBS_STRUCT3_ADD_STRUCT4
+#  undef LIBS_STRUCT3_ADD_STRUCT4
+# endif /* LIBS_STRUCT3_ADD_STRUCT4 */
+# ifdef LIBS_STRUCT4_ADD_STRUCT2
+#  undef LIBS_STRUCT4_ADD_STRUCT2
+# endif /* LIBS_STRUCT4_ADD_STRUCT2 */
+# ifdef LIBS_STRUCT4_ADD_STRUCT3
+#  undef LIBS_STRUCT4_ADD_STRUCT3
+# endif /* LIBS_STRUCT4_ADD_STRUCT3 */
+# ifdef LIBS_STRUCT4_ADD_STRUCT4
+#  undef LIBS_STRUCT4_ADD_STRUCT4
+# endif /* LIBS_STRUCT4_ADD_STRUCT4 */
+
+# ifdef libs_always_inline
+#  undef libs_always_inline
+# endif /* libs_always_inline */
 #endif /* LIBSTRUCTS_H */
