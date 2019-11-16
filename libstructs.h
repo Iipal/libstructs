@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 16:45:57 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/11/16 15:24:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/11/16 17:42:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 #  define LIBS_NO_UNSIGNED_STRUCTS
 #  define LIBS_NO_FLOATING_STRUCTS
 #  define LIBS_NO_VOIDPTR_STRUCTS
-
-#  define libs_always_inline
 # endif /* LIBS_NO_STRUCTS */
 
 # include <sys/cdefs.h>
