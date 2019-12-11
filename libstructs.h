@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 16:45:57 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/12/11 21:25:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/11 22:00:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # endif /* libs_static_inline */
 
 #ifndef libs_attributes
-#  define libs_attributes __attribute__((__const__,__pure__,__always_inline__))
+#  define libs_attributes __attribute__((__const__,__always_inline__))
 #endif /* libs_attributes */
 
 # ifndef LIBS_CREATE_STRUCT2
